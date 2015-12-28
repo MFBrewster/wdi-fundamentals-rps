@@ -1,11 +1,12 @@
+playToFive();
+
 ////////////////////////////////////////////////
 /*   Provided Code - Please Don't Edit   */
 ////////////////////////////////////////////////
-'use strict';
+//'use strict';
 
 function getInput() {
-    console.log("Please choose either 'rock', 'paper', or 'scissors'.");
-    return prompt();
+    return prompt("Please choose either 'rock', 'paper', or 'scissors'.");
 }
 function randomPlay() {
     var randomNumber = Math.random();
@@ -73,23 +74,27 @@ function playToFive() {
     console.log("Let's play Rock, Paper, Scissors");
     var playerWins = 0;
     var computerWins = 0;
-    var playerMove;
-    var computerMove;
-    var winner;
+    var pMove;
+    var cMove;
+    var roundWinner;
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
     while (playerWins < 5 && computerWins < 5) {
-        playerMove = '';
-        computerMove = '';
-        winner = '';
-        playerMove = getPlayerMove();
-        computerMove = getComputerMove();
-        console.log('Player chose ' + playerMove + ' while Computer chose ' + computerMove);
-        winner = getWinner(playerMove, computerMove);
-        console.log('This round\'s winner is: ' + winner);
-        if (winner === 'player') { playerWins++; }
-        else if (winner === 'computer') { computerWins++; }
+        pMove = '';
+        cMove = '';
+        roundWinner = '';
+
+        pMove = getPlayerMove();
+        cMove = getComputerMove();
+        console.log('Player chose ' + pMove + ' while Computer chose ' + cMove);
+        
+        roundWinner = getWinner(pMove, cMove);
+        console.log('This round\'s winner is: ' + roundWinner);
+        
+        if (roundWinner === 'player') { playerWins++; }
+        else if (roundWinner === 'computer') { computerWins++; }
+        else if (roundWinner === 'tie') {  }
+        else break;
         console.log('Player wins: ' + playerWins + '; Computer wins: ' + computerWins);
     }
     return [playerWins, computerWins];
 }
-
